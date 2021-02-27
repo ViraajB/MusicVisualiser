@@ -64,7 +64,7 @@ namespace Computing_Project
             for (int h = Math.Max(i - 1, 0); h < Math.Min(i + 1, 64); h++)
                 value += vSmooth(h, s);
 
-            return value / 4;
+            return value / ((1 + 1) * 2);
         }
 
         private void DrawVis(int i, double c, float size, double value)
@@ -87,11 +87,11 @@ namespace Computing_Project
 
             Graphics.Print("Press 'Escape' to exit" + "\nPress 'F' to enter or exit full screen mode");
 
-            size = WindowWidth / 64;
-            for (int i = 0; i < 64; i++)
+            size = WindowWidth / 128;
+            for (int i = 0; i < 128; i++)
             {
                 double value = BothSmooth(i);
-                DrawVis(i, 64, size, value);
+                DrawVis(i, 128, size, value);
             }
         }
     }
