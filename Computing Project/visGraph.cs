@@ -39,7 +39,7 @@ namespace Computing_Project
             }
             Graphics.Print("Press 'Escape' to exit" + "\nPress 'F' to enter or exit fullscreen mode");
             
-            int len =buffer.FloatBuffer.Length / 5;
+            int len =buffer.FloatBuffer.Length / 10;
             int spp = len / WindowWidth; //samples per pixel
 
             for (int i = 0; i < len; i += spp)

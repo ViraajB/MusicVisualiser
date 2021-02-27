@@ -11,3 +11,4 @@ The program creates a visualiser for the currently playing audio. It only works 
 - Add way to save waveform.
 - Add way to generate waveform for music file.
 - Create a main menu
+- Stabilise the graph visualiser
