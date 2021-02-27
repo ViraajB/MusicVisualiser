@@ -28,7 +28,7 @@ namespace Computing_Project
         public override void KeyPressed(KeyConstant key, Scancode scancode, bool isRepeat)
         {
             if (key == KeyConstant.F) Window.SetFullscreen(!Window.GetFullscreen());
-            if (key == KeyConstant.Escape) Environment.Exit(0);//This now works but complains about cleanup - not an issue OS handles it for me
+            if (key == KeyConstant.Escape) Environment.Exit(0); //Window.Close(); //Closes window and returns to menu.
         }
     }
 }
