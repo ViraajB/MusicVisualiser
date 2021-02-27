@@ -1,9 +1,9 @@
 # ComputingProject
 
-I'm using this file to keep track of what I want to add
+The program creates a visualiser for the currently playing audio. It only works with Windows due to what I used to achieve it.
 
 
-//TODO\\
+# TODO
 
 - Add way for user to change colours of bars.
 - Fix the exit key.
