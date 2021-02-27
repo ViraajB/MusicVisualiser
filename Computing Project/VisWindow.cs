@@ -28,7 +28,7 @@ namespace Computing_Project
         public override void KeyPressed(KeyConstant key, Scancode scancode, bool isRepeat)
         {
             if (key == KeyConstant.F) Window.SetFullscreen(!Window.GetFullscreen());
-            if (key == KeyConstant.Escape) Environment.Exit(0); //Window.Close(); //Closes window and returns to menu.
+            if (key == KeyConstant.Escape)  Environment.Exit(0); //Closes program.
         }
     }
 }

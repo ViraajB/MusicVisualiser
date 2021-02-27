@@ -10,9 +10,7 @@ namespace Computing_Project
     class visBars : visWindow
     {
         private WaveBuffer buffer;
-        private float size = 10;
         private List<Complex[]> smooth = new List<Complex[]>();
-        private Complex[] values;
 
         public override void Load()
         {
@@ -34,8 +32,8 @@ namespace Computing_Project
             buffer = new WaveBuffer(e.Buffer); //saves buffer in the class variable
             int len = buffer.FloatBuffer.Length / 8;
 
-            //fft
-            values = new Complex[len];
+            //fft begins here
+            Complex[] values = new Complex[len];
             for (int i = 0; i < len; i++)
                 values[i] = new Complex(buffer.FloatBuffer[i], 0.0);
             Fourier.Forward(values, FourierOptions.Default);
@@ -45,13 +43,12 @@ namespace Computing_Project
             if (smooth.Count > 3)
                 smooth.RemoveAt(0);
         }
-        //There has to be a way to clean up the stuff below...
         public double vSmooth(int i, Complex[][] s)
         {
             double value = 0;
 
             for (int v = 0; v < s.Length; v++)
-                value += Math.Abs(s[v] != null ? s[v][i].Magnitude : 0.0);
+                value += Math.Abs(s[v] != null ? s[v][i].Magnitude : 0.0); //checks if the current value in the smooth[] is not null and either uses its magnitude or sets it to 0.0
 
             return value / s.Length;
         }
@@ -67,7 +64,7 @@ namespace Computing_Project
             return value / ((1 + 1) * 2);
         }
 
-        private void DrawVis(int i, double c, float size, double value)
+        private void DrawVis(int i, float size, double value)
         {
             value *= WindowHeight / 2;
             value += BothSmooth(i - 1) + BothSmooth(i + 1);
@@ -88,11 +85,11 @@ namespace Computing_Project
 
             Graphics.Print("Press 'Escape' to exit" + "\nPress 'F' to enter or exit full screen mode");
 
-            size = WindowWidth / 128;
+            float size = WindowWidth / 128;
             for (int i = 0; i < 128; i++)
             {
                 double value = BothSmooth(i);
-                DrawVis(i, 128, size, value);
+                DrawVis(i, size, value);
             }
         }
     }

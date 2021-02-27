@@ -42,7 +42,7 @@ namespace Computing_Project
             int len =buffer.FloatBuffer.Length / 5;
             int spp = len / WindowWidth; //samples per pixel
 
-            for (int i = 0; i < len; i+= spp)
+            for (int i = 0; i < len; i += spp)
             {
                 //current sample
                 int x = i;
