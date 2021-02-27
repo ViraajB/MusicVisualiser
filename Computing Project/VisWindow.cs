@@ -1,4 +1,5 @@
 ﻿using Love;
+using System;
 
 namespace Computing_Project
 {
@@ -27,7 +28,7 @@ namespace Computing_Project
         public override void KeyPressed(KeyConstant key, Scancode scancode, bool isRepeat)
         {
             if (key == KeyConstant.F) Window.SetFullscreen(!Window.GetFullscreen());
-            if (key == KeyConstant.Escape) Event.Quit(0); //No clue why this is locking up the program...
+            if (key == KeyConstant.Escape) Environment.Exit(0);//This now works but complains about cleanup - not an issue OS handles it for me
         }
     }
 }

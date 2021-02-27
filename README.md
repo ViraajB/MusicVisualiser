@@ -6,7 +6,6 @@ The program creates a visualiser for the currently playing audio. It only works 
 # TODO
 
 - Add way for user to change colours of bars.
-- Fix the exit key.
 - Add way for user to change height and width of bars.
 - Clean up and remove unnecessary stuff.
 - Add way to change number of bars.
