@@ -6,7 +6,7 @@ namespace Computing_Project
     {
         static void Main(string[] args)
         {
-            Boot.Run(new VisMaths());
+            Boot.Run(new visGraph());
         }
     }
 }

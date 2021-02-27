@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace Computing_Project
 {
-    class VisMaths : VisWindow
+    class visBars : VisWindow
     {
         private WaveBuffer buffer;
         private float size = 10;
@@ -16,7 +16,7 @@ namespace Computing_Project
 
         public override void Load()
         {
-            WindowTitle = "Visualiser";
+            WindowTitle = "Visualiser - Bars";
             base.Load();
 
             //start audio capture
@@ -61,7 +61,7 @@ namespace Computing_Project
 
             double value = 0;
 
-            for (int h = Math.Max(i - 1, 0); h < Math.Min(i + 1, 64); h++)
+            for (int h = Math.Max(i - 1, 0); h < Math.Min(i + 1, 128); h++)
                 value += vSmooth(h, s);
 
             return value / ((1 + 1) * 2);
@@ -73,12 +73,13 @@ namespace Computing_Project
             value += BothSmooth(i - 1) + BothSmooth(i + 1);
             value /= 3;
 
+            Graphics.SetColor(204, 0, 204); //This sets the colour
             Graphics.Rectangle(DrawMode.Fill, i * size, WindowHeight, size, (float)-value);
         }
 
         public override void Draw()
         {
-            Graphics.SetColor(102, 255, 102); //I think this is how you change colours but I have no clue how it works.
+            Graphics.SetColor(1, 1, 1);
             if(buffer == null)
             {
                 Graphics.Print("No buffer available");
