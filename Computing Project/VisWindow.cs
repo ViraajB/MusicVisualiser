@@ -3,7 +3,7 @@ using System;
 
 namespace Computing_Project
 {
-    class VisWindow : Scene
+    class visWindow : Scene
     {
         public int WindowWidth;
         public int WindowHeight;

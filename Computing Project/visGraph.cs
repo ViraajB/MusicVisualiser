@@ -4,7 +4,7 @@ using NAudio.Wave;
 
 namespace Computing_Project
 {
-    class visGraph : VisWindow
+    class visGraph : visWindow
     {
         private WaveBuffer buffer;
 

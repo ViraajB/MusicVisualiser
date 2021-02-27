@@ -7,7 +7,7 @@ using System.Collections.Generic;
 
 namespace Computing_Project
 {
-    class visBars : VisWindow
+    class visBars : visWindow
     {
         private WaveBuffer buffer;
         private float size = 10;
