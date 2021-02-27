@@ -27,7 +27,7 @@ namespace Computing_Project
         public override void KeyPressed(KeyConstant key, Scancode scancode, bool isRepeat)
         {
             if (key == KeyConstant.F) Window.SetFullscreen(!Window.GetFullscreen());
-            if (key == KeyConstant.Escape) Event.Quit();
+            if (key == KeyConstant.Escape) Event.Quit(0); //No clue why this is locking up the program...
         }
     }
 }

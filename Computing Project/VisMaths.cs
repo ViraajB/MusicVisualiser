@@ -10,12 +10,9 @@ namespace Computing_Project
     class VisMaths : VisWindow
     {
         private WaveBuffer buffer;
-        private static int vertical_smoothness = 3;
-        public static int horizontal_smoothness = 1;
         private float size = 10;
         private List<Complex[]> smooth = new List<Complex[]>();
         private Complex[] values;
-        private double count = 64;
 
         public override void Load()
         {
@@ -45,9 +42,10 @@ namespace Computing_Project
 
             //shift array
             smooth.Add(values);
-            if (smooth.Count > vertical_smoothness)
+            if (smooth.Count > 3)
                 smooth.RemoveAt(0);
         }
+        //There has to be a way to clean up the stuff below...
         public double vSmooth(int i, Complex[][] s)
         {
             double value = 0;
@@ -63,25 +61,10 @@ namespace Computing_Project
 
             double value = 0;
 
-            for (int h = Math.Max(i - horizontal_smoothness, 0); h < Math.Min(i + horizontal_smoothness, 64); h++)
+            for (int h = Math.Max(i - 1, 0); h < Math.Min(i + 1, 64); h++)
                 value += vSmooth(h, s);
 
-            return value / ((horizontal_smoothness + 1) * 2);
-        }
-
-        public double hSmooth(int i)
-        {
-            if (i > 1)
-            {
-                double value = values[i].Magnitude;
-
-                for (int h = i - horizontal_smoothness; h <= i + horizontal_smoothness; h++)
-                    value += values[h].Magnitude;
-
-                return value / ((horizontal_smoothness + 1) * 2);
-            }
-
-            return 0;
+            return value / 4;
         }
 
         private void DrawVis(int i, double c, float size, double value)
@@ -95,7 +78,7 @@ namespace Computing_Project
 
         public override void Draw()
         {
-            Graphics.SetColor(1, 1, 1);
+            Graphics.SetColor(102, 255, 102); //I think this is how you change colours but I have no clue how it works.
             if(buffer == null)
             {
                 Graphics.Print("No buffer available");
@@ -105,10 +88,10 @@ namespace Computing_Project
             Graphics.Print("Press 'Escape' to exit" + "\nPress 'F' to enter or exit full screen mode");
 
             size = WindowWidth / 64;
-            for (int i = 0; i < count; i++)
+            for (int i = 0; i < 64; i++)
             {
                 double value = BothSmooth(i);
-                DrawVis(i, count, size, value);
+                DrawVis(i, 64, size, value);
             }
         }
     }
