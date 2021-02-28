@@ -61,17 +61,7 @@ namespace Computing_Project
             for (int h = Math.Max(i - 1, 0); h < Math.Min(i + 1, 128); h++)
                 value += vSmooth(h, s);
 
-            return value / ((1 + 1) * 2);
-        }
-
-        private void DrawVis(int i, float size, double value)
-        {
-            value *= WindowHeight / 2;
-            value += BothSmooth(i - 1) + BothSmooth(i + 1);
-            value /= 3;
-
-            Graphics.SetColor(204, 0, 204); //This sets the colour
-            Graphics.Rectangle(DrawMode.Fill, i * size, WindowHeight, size, (float)-value);
+            return value / 4;
         }
 
         public override void Draw()
@@ -89,7 +79,9 @@ namespace Computing_Project
             for (int i = 0; i < 128; i++)
             {
                 double value = BothSmooth(i);
-                DrawVis(i, size, value);
+                value = ((value * (WindowHeight / 2)) + (BothSmooth(i - 1) + BothSmooth(i + 1))) / 3;
+                Graphics.SetColor(204, 0, 204); //change colour here
+                Graphics.Rectangle(DrawMode.Fill, i * size, WindowHeight, size, (float)-value);
             }
         }
     }
