@@ -26,9 +26,6 @@ namespace Computing_Project
         {
             buffer = new WaveBuffer(e.Buffer);
         }
-        //maybe add the key presses to manipulate the graph...
-        //maybe add the code required to mess with the intensity...
-
         public override void Draw()
         {
             Graphics.SetColor(1, 1, 1);
@@ -53,8 +50,12 @@ namespace Computing_Project
                 float prevy = buffer.FloatBuffer[Math.Max((i - spp), 0)]; //Math.Max is used to prevent out of bounds error (0 is used as a fallback).
 
                 //render graph
-                Graphics.SetColor(colour.r, colour.g, colour.b); //change colour here
+                Graphics.SetColor(colour.r, colour.g, colour.b);
                 Graphics.Line(prevx, WindowHeight / 2 + prevy * (WindowHeight / 4), x, WindowHeight / 2 + y * (WindowHeight / 4));
+                /*
+                 * For some reason the line is not "stable", it duplicates the line if it moves too fast.
+                 * Going to look into this.
+                 */
             }
         }
     }

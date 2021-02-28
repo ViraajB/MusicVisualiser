@@ -3,7 +3,7 @@ using System;
 
 namespace Computing_Project
 {
-    static class colour //colour class so user can set the colour of the visualiser
+    class colour //colour class so user can set the colour of the visualiser, variables are in a class so it can be used throughout the entire project
     {
         public static int r = 255; //sets default colour to red
         public static int g = 000;
