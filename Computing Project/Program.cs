@@ -7,6 +7,7 @@ namespace Computing_Project
     {
         static void Main(string[] args)
         {
+            //adds colours to the colour array
             bool isDone = false;
             do
             {
