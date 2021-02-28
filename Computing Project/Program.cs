@@ -7,17 +7,25 @@ namespace Computing_Project
     {
         static void Main(string[] args)
         {
+            //adds colours to the colour array
             bool isDone = false;
             do
             {
+                Console.Title = "Launcher";
                 Console.WriteLine("Enter your choice.");
                 Console.WriteLine(
-                    "1 : Bars Visualiser" +
-                    "\n2 : Graph Visualiser" +
-                    "\n3 : Exit Program"
+                    "\n|___|_________________|" +
+                    "\n|   |                 |" +
+                    "\n| 1 | Bars Visualiser |" +
+                    "\n|   |                 |" +
+                    "\n| 2 | Graph Visualiser|" +
+                    "\n|   |                 |" +
+                    "\n| 3 | Exit Program    |" +
+                    "\n|   |                 |" +
+                    "\n|___|_________________|" +
+                    "\n"
                     );
                 string choice = Console.ReadLine();
-
                 switch (choice)
                 {
                     case "1":
