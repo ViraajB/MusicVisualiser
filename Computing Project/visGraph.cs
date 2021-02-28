@@ -11,7 +11,7 @@ namespace Computing_Project
 
         public override void Load()
         {
-            WindowTitle = "Visualiser - Graph";
+            WindowTitle = "Graph Visualiser";
             base.Load();
 
             //start audio capture
@@ -27,6 +27,26 @@ namespace Computing_Project
         {
             buffer = new WaveBuffer(e.Buffer);
         }
+        public override void KeyPressed(KeyConstant key, Scancode scancode, bool isRepeat)
+        {
+            base.KeyPressed(key, scancode, isRepeat);
+            switch (key)
+            {
+                case KeyConstant.Up:
+                    if (intensity < 10)
+                    {
+                        intensity += 1;
+                    }
+                    break;
+
+                case KeyConstant.Down:
+                    if(intensity > 1)
+                    {
+                        intensity -= 1;
+                    }
+                    break;
+            }
+        }
         public override void Draw()
         {
             Graphics.SetColor(1, 1, 1);
@@ -35,7 +55,13 @@ namespace Computing_Project
                 Graphics.Print("No buffer available");
                 return;
             }
-            Graphics.Print("Press 'Escape' to exit" + "\nPress 'F' to enter or exit fullscreen mode");
+            Graphics.Print(
+                "Press 'Escape' to exit" +
+                "\nPress 'F' to enter or exit fullscreen mode" +
+                "\nPress 'up' to increase intensity." +
+                "\nPress 'down' to decrease intensity" +
+                "\nCurrent intensity = " + intensity.ToString()
+                );
             
             int len = buffer.FloatBuffer.Length / 10;
             int spp = len / WindowWidth; //samples per pixel
@@ -52,7 +78,7 @@ namespace Computing_Project
 
                 //render graph
                 Graphics.SetColor(colour.r, colour.g, colour.b);
-                Graphics.Line(prevx, WindowHeight / 2 + prevy * (WindowHeight / intensity), x, WindowHeight / 2 + y * (WindowHeight / intensity));
+                Graphics.Line(prevx, WindowHeight / 2 + prevy * (WindowHeight / (intensity * 2)), x, WindowHeight / 2 + y * (WindowHeight / (intensity * 2)));
                 /*
                  * For some reason the line is not "stable", it duplicates the line if it moves too fast.
                  * Going to look into this.

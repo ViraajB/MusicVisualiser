@@ -44,6 +44,10 @@
               "target": "Package",
               "version": "[3.8.0, )"
             },
+            "ConsoleTables": {
+              "target": "Package",
+              "version": "[2.4.2, )"
+            },
             "Love2dCS": {
               "target": "Package",
               "version": "[11.0.50, )"

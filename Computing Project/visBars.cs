@@ -11,11 +11,11 @@ namespace Computing_Project
     {
         private WaveBuffer buffer;
         private List<Complex[]> smooth = new List<Complex[]>();
-        private int numbars = 128;
+        private int numbars = 64;
 
         public override void Load()
         {
-            WindowTitle = "Visualiser - Bars";
+            WindowTitle = "Bar Visualiser";
             base.Load();
 
             //start audio capture
@@ -43,6 +43,24 @@ namespace Computing_Project
             smooth.Add(values);
             if (smooth.Count > 3)
                 smooth.RemoveAt(0);
+        }
+        public override void KeyPressed(KeyConstant key, Scancode scancode, bool isRepeat)
+        {
+            base.KeyPressed(key, scancode, isRepeat);
+
+            switch (key)
+            {
+                case KeyConstant.Up:
+                    numbars += 64;
+                    break;
+
+                case KeyConstant.Down:
+                    if(numbars > 64)
+                    {
+                        numbars -= 64;
+                    }
+                    break;
+            }
         }
         public double vSmooth(int i, Complex[][] s)
         {
@@ -74,7 +92,13 @@ namespace Computing_Project
                 return;
             }
 
-            Graphics.Print("Press 'Escape' to exit" + "\nPress 'F' to enter or exit full screen mode");
+            Graphics.Print(
+                "Press 'Escape' to exit" + 
+                "\nPress 'F' to enter or exit full screen mode" +
+                "\nPress 'up' to increase number of bars" +
+                "\nPress 'down' to decrease number of bars" +
+                "\nNumber of bars = " + numbars.ToString()
+                );
 
             float size = WindowWidth / numbars;
             for (int i = 0; i < numbars; i++)

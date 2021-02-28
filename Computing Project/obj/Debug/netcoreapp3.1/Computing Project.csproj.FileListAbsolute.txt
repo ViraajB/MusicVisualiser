@@ -25,3 +25,4 @@ D:\programs\Computing Project\Computing Project\obj\Debug\netcoreapp3.1\Computin
 D:\programs\Computing Project\Computing Project\obj\Debug\netcoreapp3.1\Computing Project.dll
 D:\programs\Computing Project\Computing Project\obj\Debug\netcoreapp3.1\Computing Project.pdb
 D:\programs\Computing Project\Computing Project\obj\Debug\netcoreapp3.1\Computing Project.genruntimeconfig.cache
+D:\programs\Computing Project\Computing Project\bin\Debug\netcoreapp3.1\ConsoleTables.dll

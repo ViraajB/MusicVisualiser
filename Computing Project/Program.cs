@@ -1,5 +1,6 @@
 ﻿using Love;
 using System;
+using ConsoleTables;
 
 namespace Computing_Project
 {
@@ -14,22 +15,14 @@ namespace Computing_Project
         static void Main(string[] args)
         {
             bool isDone = false;
+            var table = new ConsoleTable("Option", "Outcome"); //creates the menu for me
+            table.AddRow(1, "Bars Visualiser")
+                .AddRow(2, "Graph Visualiser")
+                .AddRow(3, "Quit");
             do
             {
                 Console.Title = "Launcher";
-                Console.WriteLine("Enter your choice.");
-                Console.WriteLine(
-                    "\n|___|_________________|" +
-                    "\n|   |                 |" +
-                    "\n| 1 | Bars Visualiser |" +
-                    "\n|   |                 |" +
-                    "\n| 2 | Graph Visualiser|" +
-                    "\n|   |                 |" +
-                    "\n| 3 | Exit Program    |" +
-                    "\n|   |                 |" +
-                    "\n|___|_________________|" +
-                    "\n"
-                    );
+                table.Write(Format.Alternative);
                 string choice = Console.ReadLine();
                 switch (choice)
                 {
