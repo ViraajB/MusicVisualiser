@@ -3,11 +3,16 @@ using System;
 
 namespace Computing_Project
 {
+    static class colour //colour class so user can set the colour of the visualiser
+    {
+        public static int r = 255; //sets default colour to red
+        public static int g = 000;
+        public static int b = 000;
+    }
     class Program
     {
         static void Main(string[] args)
         {
-            //adds colours to the colour array
             bool isDone = false;
             do
             {
@@ -29,10 +34,28 @@ namespace Computing_Project
                 switch (choice)
                 {
                     case "1":
+                        Console.WriteLine("Would you like to change the colour of the visualiser? Enter the RGB value, default colour is red with rgb values of {0} {1} {2}.", colour.r, colour.g, colour.b + "\n[y/n]");
+                        string y = Console.ReadLine();
+                        if (y == "y")
+                        {
+                            Console.WriteLine("Enter the RGB value of the colour, in the order 'red, green, blue'.");
+                            colour.r = int.Parse(Console.ReadLine());
+                            colour.g = int.Parse(Console.ReadLine());
+                            colour.b = int.Parse(Console.ReadLine());
+                        }
                         Boot.Run(new visBars()); //starts the visualiser window
                         break;
 
                     case "2":
+                        Console.WriteLine("Would you like to change the colour of the visualiser? Enter the RGB value, default colour is red with rgb values of {0} {1} {2}.", colour.r, colour.g, colour.b + "\n[y/n]");
+                        y = Console.ReadLine();
+                        if (y == "y")
+                        {
+                            Console.WriteLine("Enter the RGB value of the colour, in the order 'red, green, blue'.");
+                            colour.r = int.Parse(Console.ReadLine());
+                            colour.g = int.Parse(Console.ReadLine());
+                            colour.b = int.Parse(Console.ReadLine());
+                        }
                         Boot.Run(new visGraph());
                         break;
 

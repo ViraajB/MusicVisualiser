@@ -53,7 +53,7 @@ namespace Computing_Project
                 float prevy = buffer.FloatBuffer[Math.Max((i - spp), 0)]; //Math.Max is used to prevent out of bounds error (0 is used as a fallback).
 
                 //render graph
-                Graphics.SetColor(204, 0, 204); //change colour here
+                Graphics.SetColor(colour.r, colour.g, colour.b); //change colour here
                 Graphics.Line(prevx, WindowHeight / 2 + prevy * (WindowHeight / 4), x, WindowHeight / 2 + y * (WindowHeight / 4));
             }
         }

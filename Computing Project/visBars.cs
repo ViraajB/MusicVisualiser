@@ -66,6 +66,11 @@ namespace Computing_Project
 
         public override void Draw()
         {
+            /*colourRGB colour = new colourRGB();
+            colour.r = 255;
+            colour.g = 000;
+            colour.b = 000;*/
+
             Graphics.SetColor(1, 1, 1);
             if(buffer == null)
             {
@@ -80,7 +85,7 @@ namespace Computing_Project
             {
                 double value = BothSmooth(i);
                 value = ((value * (WindowHeight / 2)) + (BothSmooth(i - 1) + BothSmooth(i + 1))) / 3;
-                Graphics.SetColor(204, 0, 204); //change colour here
+                Graphics.SetColor(colour.r, colour.g, colour.b); ;
                 Graphics.Rectangle(DrawMode.Fill, i * size, WindowHeight, size, (float)-value);
             }
         }
