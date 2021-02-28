@@ -11,6 +11,7 @@ namespace Computing_Project
     {
         private WaveBuffer buffer;
         private List<Complex[]> smooth = new List<Complex[]>();
+        private int numbars = 128;
 
         public override void Load()
         {
@@ -58,7 +59,7 @@ namespace Computing_Project
 
             double value = 0;
 
-            for (int h = Math.Max(i - 1, 0); h < Math.Min(i + 1, 128); h++)
+            for (int h = Math.Max(i - 1, 0); h < Math.Min(i + 1, numbars); h++)
                 value += vSmooth(h, s);
 
             return value / 4;
@@ -75,8 +76,8 @@ namespace Computing_Project
 
             Graphics.Print("Press 'Escape' to exit" + "\nPress 'F' to enter or exit full screen mode");
 
-            float size = WindowWidth / 128;
-            for (int i = 0; i < 128; i++)
+            float size = WindowWidth / numbars;
+            for (int i = 0; i < numbars; i++)
             {
                 double value = BothSmooth(i);
                 value = ((value * (WindowHeight / 2)) + (BothSmooth(i - 1) + BothSmooth(i + 1))) / 3;

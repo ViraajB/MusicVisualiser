@@ -7,6 +7,7 @@ namespace Computing_Project
     class visGraph : visWindow
     {
         private WaveBuffer buffer;
+        private int intensity = 4;
 
         public override void Load()
         {
@@ -51,7 +52,7 @@ namespace Computing_Project
 
                 //render graph
                 Graphics.SetColor(colour.r, colour.g, colour.b);
-                Graphics.Line(prevx, WindowHeight / 2 + prevy * (WindowHeight / 4), x, WindowHeight / 2 + y * (WindowHeight / 4));
+                Graphics.Line(prevx, WindowHeight / 2 + prevy * (WindowHeight / intensity), x, WindowHeight / 2 + y * (WindowHeight / intensity));
                 /*
                  * For some reason the line is not "stable", it duplicates the line if it moves too fast.
                  * Going to look into this.
