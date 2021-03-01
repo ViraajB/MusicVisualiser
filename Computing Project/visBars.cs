@@ -111,8 +111,7 @@ namespace Computing_Project
             float size = WindowWidth / numbars;
             for (int i = 0; i < numbars; i++)
             {
-                double value = BothSmooth(i);
-                value = ((value * (WindowHeight / 2)) + (BothSmooth(i - 1) + BothSmooth(i + 1))) / 3;
+                double value = (BothSmooth(i) * (WindowHeight / 2) / 3);
                 Graphics.SetColor(colour.r, colour.g, colour.b);
                 Graphics.Rectangle(DrawMode.Fill, i * size, WindowHeight, size, (float)-value);
             }
