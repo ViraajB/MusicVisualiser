@@ -9,13 +9,13 @@ namespace Computing_Project
 {
     class Visualiser : VisWindow
     {
-        private bool barMode = true; //true for bars, false for graph.
         //bar specific variables
         private List<Complex[]> smooth = new List<Complex[]>();
         private int numbars = 64;
         //used in both
         private WaveBuffer buffer;
         private bool hidden = false;
+        private bool barMode = true; //true for bars, false for graph.
         //graph specific variables
         private int intensity = 4;
 
@@ -44,13 +44,17 @@ namespace Computing_Project
                 //fft begins here
                 Complex[] values = new Complex[len];
                 for (int i = 0; i < len; i++)
+                {
                     values[i] = new Complex(buffer.FloatBuffer[i], 0.0);
+                }
                 Fourier.Forward(values, FourierOptions.Default);
 
                 //shift array
                 smooth.Add(values);
                 if (smooth.Count > 3)
+                {
                     smooth.RemoveAt(0);
+                }
             }
         }
         public override void KeyPressed(KeyConstant key, Scancode scancode, bool isRepeat)
