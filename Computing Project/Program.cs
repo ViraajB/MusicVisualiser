@@ -23,6 +23,7 @@ namespace Computing_Project
             {
                 Console.Title = "Launcher";
                 table.Write(Format.Alternative);
+                Console.Write("Choice: ");
                 string choice = Console.ReadLine();
                 switch (choice)
                 {
@@ -58,7 +59,7 @@ namespace Computing_Project
                         break;
 
                     default:
-                        Console.WriteLine("Invalid input.");
+                        Console.WriteLine("\nInvalid input.");
                         break;
                 }
             } while (isDone == false);

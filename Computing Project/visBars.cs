@@ -12,6 +12,7 @@ namespace Computing_Project
         private WaveBuffer buffer;
         private List<Complex[]> smooth = new List<Complex[]>();
         private int numbars = 64;
+        private bool hidden = false;
 
         public override void Load()
         {
@@ -60,6 +61,10 @@ namespace Computing_Project
                         numbars -= 64;
                     }
                     break;
+
+                case KeyConstant.H:
+                    hidden = !hidden;
+                    break;
             }
         }
         public double vSmooth(int i, Complex[][] s)
@@ -91,14 +96,17 @@ namespace Computing_Project
                 Graphics.Print("No buffer available");
                 return;
             }
-
-            Graphics.Print(
-                "Press 'Escape' to exit" + 
-                "\nPress 'F' to enter or exit full screen mode" +
-                "\nPress 'up' to increase number of bars" +
-                "\nPress 'down' to decrease number of bars" +
-                "\nNumber of bars = " + numbars.ToString()
-                );
+            if(hidden == false)
+            {
+                Graphics.Print(
+                    "Press 'Escape' to exit" +
+                    "\nPress 'F' to enter or exit full screen mode" +
+                    "Press 'H' to hide the text" +
+                    "\nPress 'up' to increase number of bars" +
+                    "\nPress 'down' to decrease number of bars" +
+                    "\nNumber of bars = " + numbars.ToString()
+                    );
+            }
 
             float size = WindowWidth / numbars;
             for (int i = 0; i < numbars; i++)

@@ -8,6 +8,7 @@ namespace Computing_Project
     {
         private WaveBuffer buffer;
         private int intensity = 4;
+        private bool hidden = false;
 
         public override void Load()
         {
@@ -45,6 +46,10 @@ namespace Computing_Project
                         intensity -= 1;
                     }
                     break;
+
+                case KeyConstant.H:
+                    hidden = !hidden;
+                    break;
             }
         }
         public override void Draw()
@@ -55,13 +60,17 @@ namespace Computing_Project
                 Graphics.Print("No buffer available");
                 return;
             }
-            Graphics.Print(
-                "Press 'Escape' to exit" +
-                "\nPress 'F' to enter or exit fullscreen mode" +
-                "\nPress 'up' to increase intensity." +
-                "\nPress 'down' to decrease intensity" +
-                "\nCurrent intensity = " + intensity.ToString()
-                );
+            if (hidden == false)
+            {
+                Graphics.Print(
+                    "Press 'Escape' to exit" +
+                    "\nPress 'F' to enter or exit fullscreen mode" +
+                    "\nPress 'H' to hide the text" +
+                    "\nPress 'up' to increase intensity." +
+                    "\nPress 'down' to decrease intensity" +
+                    "\nCurrent intensity = " + intensity.ToString()
+                    );
+            }
             
             int len = buffer.FloatBuffer.Length / 10;
             int spp = len / WindowWidth; //samples per pixel
