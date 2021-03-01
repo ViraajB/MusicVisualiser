@@ -12,10 +12,17 @@ namespace Computing_Project
         //bar specific variables
         List<Complex[]> smooth = new List<Complex[]>();
         int numbars = 64;
+
         //used in both
         WaveBuffer buffer;
         bool hidden = false;
-        bool barMode = true; //true for bars, false for graph.
+        int visType = 0;
+        /*
+         * Changing this to an integer allows more freedom, e.g. if I want to add more types.
+         * 0 = Bar
+         * 1 = Graph
+         */
+
         //graph specific variables
         int intensity = 4;
 
@@ -37,7 +44,7 @@ namespace Computing_Project
         public void DataAvailable(object sender, WaveInEventArgs e)
         {
             buffer = new WaveBuffer(e.Buffer); //saves buffer in the class variable
-            if (barMode == true)
+            if (visType == 0)
             {
                 int len = buffer.FloatBuffer.Length / 8;
 
@@ -64,10 +71,20 @@ namespace Computing_Project
             switch (key)
             {
                 case KeyConstant.S:
-                    barMode = !barMode;
+                    if (visType < 1)
+                    {
+                        visType += 1;
+                    }else if (visType > 0 && visType < 2)
+                    {
+                        visType -= 1;
+                    }
+                    else
+                    {
+                        visType = 0; //default to 0 in case of error
+                    }
                     break;
             }
-            if (barMode == true)
+            if (visType == 0)
             {
                 switch (key)
                 {
@@ -86,7 +103,7 @@ namespace Computing_Project
                         hidden = !hidden;
                         break;
                 }
-            }else if (barMode == false)
+            }else if (visType == 1)
             {
                 switch (key)
                 {
@@ -136,7 +153,7 @@ namespace Computing_Project
                 Graphics.Print("No buffer available");
                 return;
             }
-            if (barMode == true)
+            if (visType == 0)
             {
                 if (hidden == false)
                 {
@@ -158,7 +175,7 @@ namespace Computing_Project
                     Graphics.SetColor(colour.r, colour.g, colour.b);
                     Graphics.Rectangle(DrawMode.Fill, i * size, WindowHeight, size, (float)-value);
                 }
-            } else if (barMode == false)
+            } else if (visType == 1)
             {
                 if (hidden == false)
                 {
