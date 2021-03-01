@@ -10,14 +10,14 @@ namespace Computing_Project
     class Visualiser : VisWindow
     {
         //bar specific variables
-        private List<Complex[]> smooth = new List<Complex[]>();
-        private int numbars = 64;
+        List<Complex[]> smooth = new List<Complex[]>();
+        int numbars = 64;
         //used in both
-        private WaveBuffer buffer;
-        private bool hidden = false;
-        private bool barMode = true; //true for bars, false for graph.
+        WaveBuffer buffer;
+        bool hidden = false;
+        bool barMode = true; //true for bars, false for graph.
         //graph specific variables
-        private int intensity = 4;
+        int intensity = 4;
 
         public override void Load()
         {
@@ -142,7 +142,7 @@ namespace Computing_Project
                 {
                     Graphics.Print(
                         "Press 'Escape' to exit" +
-                        "\nPress 'F' to enter or exit full screen mode" +
+                        "\nPress 'F' to enter or exit fullscreen mode" +
                         "\nPress 'H' to hide the text" +
                         "\nPress 'S' to change the visualiser style" +
                         "\nUse the 'up' and 'down' keys to change the number of bars" +
@@ -158,7 +158,7 @@ namespace Computing_Project
                     Graphics.SetColor(colour.r, colour.g, colour.b);
                     Graphics.Rectangle(DrawMode.Fill, i * size, WindowHeight, size, (float)-value);
                 }
-            } else if(barMode == false)
+            } else if (barMode == false)
             {
                 if (hidden == false)
                 {

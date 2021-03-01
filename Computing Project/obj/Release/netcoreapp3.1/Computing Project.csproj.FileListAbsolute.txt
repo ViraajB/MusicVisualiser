@@ -25,3 +25,4 @@ D:\programs\Computing Project\Computing Project\obj\Release\netcoreapp3.1\Comput
 D:\programs\Computing Project\Computing Project\obj\Release\netcoreapp3.1\Computing Project.pdb
 D:\programs\Computing Project\Computing Project\obj\Release\netcoreapp3.1\Computing Project.genruntimeconfig.cache
 D:\programs\Computing Project\Computing Project\obj\Release\netcoreapp3.1\Computing Project.csprojAssemblyReference.cache
+D:\programs\Computing Project\Computing Project\bin\Release\netcoreapp3.1\ConsoleTables.dll

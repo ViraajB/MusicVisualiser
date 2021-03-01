@@ -15,10 +15,11 @@ namespace Computing_Project
         static void Main(string[] args)
         {
             bool isDone = false;
+
             var table = new ConsoleTable("Option", "Outcome"); //creates the menu for me
-            table.AddRow(1, "Load visualiser with default settings")
-                .AddRow(2, "Change colour")
-                .AddRow(3, "Quit");
+            table.AddRow(1, "Load visualiser with default settings.")
+                .AddRow(2, "Change colour.")
+                .AddRow(3, "Quit.");
             do
             {
                 Console.Title = "Launcher";
@@ -51,7 +52,6 @@ namespace Computing_Project
                         break;
                 }
             } while (isDone == false);
-            Environment.Exit(0);
         }
     }
 }
