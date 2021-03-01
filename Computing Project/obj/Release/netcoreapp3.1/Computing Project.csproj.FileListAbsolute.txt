@@ -1,15 +1,10 @@
 D:\programs\Computing Project\Computing Project\bin\Release\netcoreapp3.1\Computing Project.exe
-D:\programs\Computing Project\Computing Project\bin\Release\netcoreapp3.1\Accord.dll.config
 D:\programs\Computing Project\Computing Project\bin\Release\netcoreapp3.1\Computing Project.deps.json
 D:\programs\Computing Project\Computing Project\bin\Release\netcoreapp3.1\Computing Project.runtimeconfig.json
 D:\programs\Computing Project\Computing Project\bin\Release\netcoreapp3.1\Computing Project.runtimeconfig.dev.json
 D:\programs\Computing Project\Computing Project\bin\Release\netcoreapp3.1\Computing Project.dll
 D:\programs\Computing Project\Computing Project\bin\Release\netcoreapp3.1\Computing Project.pdb
-D:\programs\Computing Project\Computing Project\bin\Release\netcoreapp3.1\Accord.dll
-D:\programs\Computing Project\Computing Project\bin\Release\netcoreapp3.1\Accord.Math.Core.dll
-D:\programs\Computing Project\Computing Project\bin\Release\netcoreapp3.1\Accord.Math.dll
 D:\programs\Computing Project\Computing Project\bin\Release\netcoreapp3.1\LoveSharp.dll
-D:\programs\Computing Project\Computing Project\bin\Release\netcoreapp3.1\MathNet.Numerics.dll
 D:\programs\Computing Project\Computing Project\bin\Release\netcoreapp3.1\NAudio.dll
 D:\programs\Computing Project\Computing Project\bin\Release\netcoreapp3.1\NAudio.Asio.dll
 D:\programs\Computing Project\Computing Project\bin\Release\netcoreapp3.1\NAudio.Core.dll

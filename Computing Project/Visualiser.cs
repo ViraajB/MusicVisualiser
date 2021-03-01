@@ -1,17 +1,14 @@
 ﻿using Love;
 using NAudio.Wave;
+using NAudio.Dsp;
 using System;
-using System.Numerics;
-using MathNet.Numerics.IntegralTransforms;
-using System.Collections.Generic;
 
 namespace Computing_Project
 {
     class Visualiser : VisWindow
     {
         //bar specific variables
-        List<Complex[]> smooth = new List<Complex[]>();
-        int numbars = 64;
+        int M = 6;
 
         //used in both
         WaveBuffer buffer;
@@ -24,7 +21,7 @@ namespace Computing_Project
          */
 
         //graph specific variables
-        int intensity = 4;
+        int intensity = 2;
 
         public override void Load()
         {
@@ -44,25 +41,6 @@ namespace Computing_Project
         public void DataAvailable(object sender, WaveInEventArgs e)
         {
             buffer = new WaveBuffer(e.Buffer); //saves buffer in the class variable
-            if (visType == 0)
-            {
-                int len = buffer.FloatBuffer.Length / 8;
-
-                //fft begins here
-                Complex[] values = new Complex[len];
-                for (int i = 0; i < len; i++)
-                {
-                    values[i] = new Complex(buffer.FloatBuffer[i], 0.0);
-                }
-                Fourier.Forward(values, FourierOptions.Default);
-
-                //shift array
-                smooth.Add(values);
-                if (smooth.Count > 3)
-                {
-                    smooth.RemoveAt(0);
-                }
-            }
         }
         public override void KeyPressed(KeyConstant key, Scancode scancode, bool isRepeat)
         {
@@ -83,27 +61,12 @@ namespace Computing_Project
                         visType = 0; //default to 0 in case of error
                     }
                     break;
+
+                case KeyConstant.H:
+                    hidden = !hidden;
+                    break;
             }
-            if (visType == 0)
-            {
-                switch (key)
-                {
-                    case KeyConstant.Up:
-                        numbars += 64;
-                        break;
-
-                    case KeyConstant.Down:
-                        if (numbars > 64)
-                        {
-                            numbars -= 64;
-                        }
-                        break;
-
-                    case KeyConstant.H:
-                        hidden = !hidden;
-                        break;
-                }
-            }else if (visType == 1)
+            if (visType == 1)
             {
                 switch (key)
                 {
@@ -120,31 +83,9 @@ namespace Computing_Project
                             intensity -= 1;
                         }
                         break;
-
-                    case KeyConstant.H:
-                        hidden = !hidden;
-                        break;
                 }
             }
         }
-        public double Scale(int i) //used only when the visualiser is a bar
-        {
-            var s = smooth.ToArray();
-
-            double value = 0;
-
-            for (int h = Math.Max(i - 1, 0); h < Math.Min(i + 1, numbars); h++)
-            {
-                for (int v = 0; v < s.Length; v++)
-                {
-                    value += (Math.Abs(s[v] != null ? s[v][i].Magnitude : 0.0)) / s.Length;
-                }
-                value /= 4;
-            }
-
-            return value;
-        }
-
         public override void Draw()
         {
             Graphics.SetColor(1, 1, 1);
@@ -161,19 +102,28 @@ namespace Computing_Project
                         "Press 'Escape' to exit" +
                         "\nPress 'F' to enter or exit fullscreen mode" +
                         "\nPress 'H' to hide the text" +
-                        "\nPress 'S' to change the visualiser style" +
-                        "\nUse the 'up' and 'down' keys to change the number of bars" +
-                        "\nCurrent number of bars = " + numbars.ToString()
+                        "\nPress 'S' to change the visualiser style"
                         );
                 }
 
-                float size = WindowWidth / numbars;
-                for (int i = 0; i < numbars; i++)
+                int len = buffer.FloatBuffer.Length / 8;
+
+                //fft
+                Complex[] values = new Complex[len];
+                for (int i = 0; i < len; i++)
                 {
-                    double value = Scale(i);
-                    value = ((value * (WindowHeight / 2)) + (Scale(i - 1) + Scale(i + 1))) / 3;
-                    Graphics.SetColor(colour.r, colour.g, colour.b);
-                    Graphics.Rectangle(DrawMode.Fill, i * size, WindowHeight, size, (float)-value);
+                    values[i].Y = 0;
+                    values[i].X = buffer.FloatBuffer[i];
+
+                }
+                FastFourierTransform.FFT(true, M, values);
+
+                float size = (float)WindowWidth / ((float)Math.Pow(2, M));
+
+                Graphics.SetColor(colour.r, colour.g, colour.b);
+                for (int i = 1; i < Math.Pow(2, M); i++)
+                {
+                    Graphics.Rectangle(DrawMode.Fill, (i - 1) * size, WindowHeight, size, -Math.Abs(values[i].X) * (WindowHeight / 2) * 8);
                 }
             } else if (visType == 1)
             {

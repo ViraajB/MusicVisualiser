@@ -8,37 +8,12 @@
     ".NETCoreApp,Version=v3.1": {
       "Computing Project/1.0.0": {
         "dependencies": {
-          "Accord.Math": "3.8.0",
           "ConsoleTables": "2.4.2",
           "Love2dCS": "11.0.50",
-          "MathNet.Numerics": "4.15.0",
           "NAudio": "2.0.0"
         },
         "runtime": {
           "Computing Project.dll": {}
-        }
-      },
-      "Accord/3.8.0": {
-        "runtime": {
-          "lib/netstandard2.0/Accord.dll": {
-            "assemblyVersion": "3.8.0.0",
-            "fileVersion": "3.8.0.6134"
-          }
-        }
-      },
-      "Accord.Math/3.8.0": {
-        "dependencies": {
-          "Accord": "3.8.0"
-        },
-        "runtime": {
-          "lib/netstandard2.0/Accord.Math.Core.dll": {
-            "assemblyVersion": "3.8.0.0",
-            "fileVersion": "3.8.0.6134"
-          },
-          "lib/netstandard2.0/Accord.Math.dll": {
-            "assemblyVersion": "3.8.0.0",
-            "fileVersion": "3.8.0.6134"
-          }
         }
       },
       "ConsoleTables/2.4.2": {
@@ -57,14 +32,6 @@
           "lib/netstandard1.2/LoveSharp.dll": {
             "assemblyVersion": "11.0.50.0",
             "fileVersion": "1.0.0.0"
-          }
-        }
-      },
-      "MathNet.Numerics/4.15.0": {
-        "runtime": {
-          "lib/netstandard2.0/MathNet.Numerics.dll": {
-            "assemblyVersion": "4.15.0.0",
-            "fileVersion": "4.15.0.0"
           }
         }
       },
@@ -223,20 +190,6 @@
       "serviceable": false,
       "sha512": ""
     },
-    "Accord/3.8.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-7kJrB570dO5ELim+2KWQNozuvWO9/BuZfZspdFy36fcWPNF2CEccblLuILeUlI8QJYd2DlBy0bfK8BlCx/uayA==",
-      "path": "accord/3.8.0",
-      "hashPath": "accord.3.8.0.nupkg.sha512"
-    },
-    "Accord.Math/3.8.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-K3dzeQjDIrwRnoTRoMOoIbul2Uc0B8cnEtdrSlirmIo37C+jVkmYpJzme/z4Kg99XR2Vj5W5TTNlhjn+AKR+8A==",
-      "path": "accord.math/3.8.0",
-      "hashPath": "accord.math.3.8.0.nupkg.sha512"
-    },
     "ConsoleTables/2.4.2": {
       "type": "package",
       "serviceable": true,
@@ -250,13 +203,6 @@
       "sha512": "sha512-ahPZ1eV7GTe5W+DuCkngyu7n5+kX8oloM5ILiI4G9re85Ld7dKyLFYFIFkjyjOSCwJDSPlAqys0QblrO4x2GgA==",
       "path": "love2dcs/11.0.50",
       "hashPath": "love2dcs.11.0.50.nupkg.sha512"
-    },
-    "MathNet.Numerics/4.15.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-cP4QgPPiU7boMyL8npvuQyVGVYUd/JQY1AWa+Wl2f//fuJN40qwt9ABRazunZIcDLHg3SSlgD/e+3Lnp69jNTg==",
-      "path": "mathnet.numerics/4.15.0",
-      "hashPath": "mathnet.numerics.4.15.0.nupkg.sha512"
     },
     "Microsoft.NETCore.Platforms/3.1.0": {
       "type": "package",

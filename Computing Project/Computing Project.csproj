@@ -7,10 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Accord.Math" Version="3.8.0" />
     <PackageReference Include="ConsoleTables" Version="2.4.2" />
     <PackageReference Include="Love2dCS" Version="11.0.50" />
-    <PackageReference Include="MathNet.Numerics" Version="4.15.0" />
     <PackageReference Include="NAudio" Version="2.0.0" />
   </ItemGroup>
 

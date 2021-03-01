@@ -40,10 +40,6 @@
         "netcoreapp3.1": {
           "targetAlias": "netcoreapp3.1",
           "dependencies": {
-            "Accord.Math": {
-              "target": "Package",
-              "version": "[3.8.0, )"
-            },
             "ConsoleTables": {
               "target": "Package",
               "version": "[2.4.2, )"
@@ -51,10 +47,6 @@
             "Love2dCS": {
               "target": "Package",
               "version": "[11.0.50, )"
-            },
-            "MathNet.Numerics": {
-              "target": "Package",
-              "version": "[4.15.0, )"
             },
             "NAudio": {
               "target": "Package",
