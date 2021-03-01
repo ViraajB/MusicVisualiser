@@ -67,25 +67,22 @@ namespace Computing_Project
                     break;
             }
         }
-        public double vSmooth(int i, Complex[][] s)
-        {
-            double value = 0;
-
-            for (int v = 0; v < s.Length; v++)
-                value += Math.Abs(s[v] != null ? s[v][i].Magnitude : 0.0); //checks if the current value in the smooth[] is not null and either uses its magnitude or sets it to 0.0
-
-            return value / s.Length;
-        }
-        public double BothSmooth(int i)
+        public double Scale(int i)
         {
             var s = smooth.ToArray();
 
             double value = 0;
 
             for (int h = Math.Max(i - 1, 0); h < Math.Min(i + 1, numbars); h++)
-                value += vSmooth(h, s);
+            {
+                for (int v = 0; v < s.Length; v++)
+                {
+                    value += (Math.Abs(s[v] != null ? s[v][i].Magnitude : 0.0)) / s.Length;
+                }
+                value /= 4;
+            }
 
-            return value / 4;
+            return value;
         }
 
         public override void Draw()
@@ -101,7 +98,7 @@ namespace Computing_Project
                 Graphics.Print(
                     "Press 'Escape' to exit" +
                     "\nPress 'F' to enter or exit full screen mode" +
-                    "Press 'H' to hide the text" +
+                    "\nPress 'H' to hide the text" +
                     "\nPress 'up' to increase number of bars" +
                     "\nPress 'down' to decrease number of bars" +
                     "\nNumber of bars = " + numbars.ToString()
@@ -111,7 +108,8 @@ namespace Computing_Project
             float size = WindowWidth / numbars;
             for (int i = 0; i < numbars; i++)
             {
-                double value = (BothSmooth(i) * (WindowHeight / 2) / 3);
+                double value = Scale(i);
+                value = ((value * (WindowHeight / 2)) + (Scale(i - 1) + Scale(i + 1))) / 3;
                 Graphics.SetColor(colour.r, colour.g, colour.b);
                 Graphics.Rectangle(DrawMode.Fill, i * size, WindowHeight, size, (float)-value);
             }
