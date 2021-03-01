@@ -16,8 +16,8 @@ namespace Computing_Project
         {
             bool isDone = false;
             var table = new ConsoleTable("Option", "Outcome"); //creates the menu for me
-            table.AddRow(1, "Bars Visualiser")
-                .AddRow(2, "Graph Visualiser")
+            table.AddRow(1, "Load visualiser with default settings")
+                .AddRow(2, "Change colour")
                 .AddRow(3, "Quit");
             do
             {
@@ -28,33 +28,21 @@ namespace Computing_Project
                 switch (choice)
                 {
                     case "1":
-                        Console.WriteLine("Would you like to change the colour of the visualiser? Enter the RGB value, default colour is red with rgb values of {0} {1} {2}.", colour.r, colour.g, colour.b + "\n[y/n]");
-                        string y = Console.ReadLine();
-                        if (y == "y")
-                        {
-                            Console.WriteLine("Enter the RGB value of the colour, in the order 'red, green, blue'.");
-                            colour.r = int.Parse(Console.ReadLine());
-                            colour.g = int.Parse(Console.ReadLine());
-                            colour.b = int.Parse(Console.ReadLine());
-                        }
-                        Boot.Run(new visBars()); //starts the visualiser window
+                        Boot.Run(new Visualiser()); //starts the visualiser window
                         break;
 
                     case "2":
-                        Console.WriteLine("Would you like to change the colour of the visualiser? Enter the RGB value, default colour is red with rgb values of {0} {1} {2}.", colour.r, colour.g, colour.b + "\n[y/n]");
-                        y = Console.ReadLine();
-                        if (y == "y")
-                        {
-                            Console.WriteLine("Enter the RGB value of the colour, in the order 'red, green, blue'.");
-                            colour.r = int.Parse(Console.ReadLine());
-                            colour.g = int.Parse(Console.ReadLine());
-                            colour.b = int.Parse(Console.ReadLine());
-                        }
-                        Boot.Run(new visGraph());
+                        Console.WriteLine("Enter the numerical RGB values of the colour you would like, current colour is {0}, {1}, {2}", colour.r, colour.g, colour.b);
+                        Console.Write("R: ");
+                        colour.r = int.Parse(Console.ReadLine());
+                        Console.Write("G: ");
+                        colour.g = int.Parse(Console.ReadLine());
+                        Console.Write("B: ");
+                        colour.b = int.Parse(Console.ReadLine());
+                        Boot.Run(new Visualiser());
                         break;
 
                     case "3":
-                        Environment.Exit(0);
                         isDone = true;
                         break;
 
@@ -63,6 +51,7 @@ namespace Computing_Project
                         break;
                 }
             } while (isDone == false);
+            Environment.Exit(0);
         }
     }
 }
