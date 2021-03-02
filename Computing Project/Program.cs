@@ -15,6 +15,7 @@ namespace Computing_Project
         static void Main(string[] args)
         {
             bool isDone = false;
+            bool b = false;
 
             var table = new ConsoleTable("Option", "Outcome"); //creates the menu for me
             table.AddRow(1, "Load visualiser with default settings.")
@@ -34,12 +35,48 @@ namespace Computing_Project
 
                     case "2":
                         Console.WriteLine("Enter the numerical RGB values of the colour you would like, current colour is {0}, {1}, {2}", colour.r, colour.g, colour.b);
-                        Console.Write("R: ");
-                        colour.r = int.Parse(Console.ReadLine());
-                        Console.Write("G: ");
-                        colour.g = int.Parse(Console.ReadLine());
-                        Console.Write("B: ");
-                        colour.b = int.Parse(Console.ReadLine());
+                        do
+                        {
+                            try
+                            {
+                                Console.Write("R: ");
+                                colour.r = int.Parse(Console.ReadLine());
+                                b = true;
+                            }
+                            catch (Exception)
+                            {
+                                Console.WriteLine("Invalid input");
+                            }
+                        } while (b == false);
+                        b = false;
+                        do
+                        {
+                            try
+                            {
+                                Console.Write("G: ");
+                                colour.g = int.Parse(Console.ReadLine());
+                                b = true;
+                            }
+                            catch (Exception)
+                            {
+                                Console.WriteLine("Invalid input");
+                            }
+                        } while (b == false);
+                        b = false;
+                        do
+                        {
+                            try
+                            {
+                                Console.Write("B: ");
+                                colour.b = int.Parse(Console.ReadLine());
+                                b = true;
+                            }
+                            catch (Exception)
+                            {
+                                Console.WriteLine("Invalid input");
+                            }
+                        } while (b == false);
+                        b = false;
                         Boot.Run(new Visualiser());
                         break;
 
