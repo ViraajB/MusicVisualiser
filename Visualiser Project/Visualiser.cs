@@ -120,7 +120,7 @@ namespace Visualiser_Project
                 }
 
                 int len = buffer.FloatBuffer.Length / 10;
-                float spp = (len / 2) / WindowWidth; //samples per pixel
+                float spp = len  / WindowWidth; //samples per pixel
 
                 for (int i = 0; i < WindowWidth; i++)
                 {
