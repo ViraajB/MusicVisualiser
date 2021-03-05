@@ -10,9 +10,9 @@
             "request": "launch",
             "preLaunchTask": "build",
             // If you have changed target frameworks, make sure to update the program path.
-            "program": "${workspaceFolder}/Computing Project/bin/Debug/netcoreapp3.1/Computing Project.dll",
+            "program": "${workspaceFolder}/Visualiser Project/bin/Debug/netcoreapp3.1/Visualiser_Project.dll",
             "args": [],
-            "cwd": "${workspaceFolder}/Computing Project",
+            "cwd": "${workspaceFolder}/Visualiser Project",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
             "console": "internalConsole",
             "stopAtEntry": false

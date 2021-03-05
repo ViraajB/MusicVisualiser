@@ -7,7 +7,7 @@
             "type": "process",
             "args": [
                 "build",
-                "${workspaceFolder}/Computing Project/Computing Project.csproj",
+                "${workspaceFolder}/Visualiser Project/Visualiser_Project.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -19,7 +19,7 @@
             "type": "process",
             "args": [
                 "publish",
-                "${workspaceFolder}/Computing Project/Computing Project.csproj",
+                "${workspaceFolder}/Visualiser Project/Visualiser_Project.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
@@ -32,7 +32,7 @@
             "args": [
                 "watch",
                 "run",
-                "${workspaceFolder}/Computing Project/Computing Project.csproj",
+                "${workspaceFolder}/Visualiser Project/Visualiser_Project.csproj",
                 "/property:GenerateFullPaths=true",
                 "/consoleloggerparameters:NoSummary"
             ],
