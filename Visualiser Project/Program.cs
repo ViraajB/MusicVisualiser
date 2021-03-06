@@ -1,10 +1,10 @@
 ﻿using Love;
 using System;
-using ConsoleTables;
+using ConsoleTables; //? remove this when you find a way to change colour without the console ?\\
 
 namespace Visualiser_Project
 {
-    class colour //colour class so user can set the colour of the visualiser, variables are in a class so it can be used throughout the entire project
+    class colour //*colour class so user can set the colour of the visualiser, variables are in a class so it can be used throughout the entire project*\\
     {
         public static int r = 255; //sets default colour to red
         public static int g = 000;
@@ -17,7 +17,7 @@ namespace Visualiser_Project
             bool isDone = false;
             bool b = false;
 
-            var table = new ConsoleTable("Option", "Outcome"); //creates the menu for me
+            var table = new ConsoleTable("Option", "Outcome"); //*creates the menu for me*\\
             table.AddRow(1, "Load visualiser with default settings.")
                 .AddRow(2, "Change colour.")
                 .AddRow(3, "Quit.");
@@ -30,7 +30,7 @@ namespace Visualiser_Project
                 switch (choice)
                 {
                     case "1":
-                        Boot.Run(new Visualiser()); //starts the visualiser window
+                        Boot.Run(new Visualiser()); //*starts the visualiser window*\\
                         break;
 
                     case "2":

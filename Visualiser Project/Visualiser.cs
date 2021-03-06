@@ -7,10 +7,10 @@ namespace Visualiser_Project
 {
     class Visualiser : VisWindow
     {
-        //bar specific variables
+        //*bar specific variables*\\
         int M = 6;
 
-        //used in both
+        //*used in both*\\
         WaveBuffer buffer;
         bool hidden = false;
         int visType = 0;
@@ -21,7 +21,7 @@ namespace Visualiser_Project
          * 1 = Graph
          */
 
-        //graph specific variables
+        //*graph specific variables*\\
         int intensity = 2;
 
         public override void Load()
@@ -41,7 +41,7 @@ namespace Visualiser_Project
 
         public void DataAvailable(object sender, WaveInEventArgs e)
         {
-            buffer = new WaveBuffer(e.Buffer); //saves buffer in the class variable
+            buffer = new WaveBuffer(e.Buffer); //*saves buffer in the class variable*\\
         }
         public override void KeyPressed(KeyConstant key, Scancode scancode, bool isRepeat)
         {
@@ -59,7 +59,7 @@ namespace Visualiser_Project
                     }
                     else
                     {
-                        visType = 0; //default to 0 in case of error
+                        visType = 0; //! default to 0 in case of error !\\
                     }
                     break;
 
@@ -105,7 +105,7 @@ namespace Visualiser_Project
                 Graphics.SetColor(colour.r, colour.g, colour.b);
                 for (int i = 1; i < Math.Pow(2, M); i++)
                 {
-                    Graphics.Rectangle(DrawMode.Fill, (i - 1) * size, WindowHeight, size, -Math.Abs(values[i].X) * (WindowHeight) * 8);
+                    Graphics.Rectangle(DrawMode.Fill, (i - 1) * size, WindowHeight, size, -Math.Abs(values[i].X) * (WindowHeight / 2) * 8);
                 }
             } else if (visType == 1)
             {
@@ -120,20 +120,20 @@ namespace Visualiser_Project
                 }
 
                 int len = buffer.FloatBuffer.Length / 10;
-                float spp = len  / WindowWidth; //samples per pixel
+                float spp = len / WindowWidth; //*samples per pixel*\\
 
                 for (int i = 0; i < WindowWidth; i++)
                 {
-                    //current sample
+                    //*current sample*\\
                     int x = (int)Math.Round(i * spp);
                     float y = buffer.FloatBuffer[i];
 
-                    //previous sample
+                    //*previous sample*\\
                     int prevx = x - 1;
                     int previ = (int)Math.Round((i - 1) * spp);
-                    float prevy = buffer.FloatBuffer[Math.Max(previ, 0)]; //Math.Max is used to prevent out of bounds error (0 is used as a fallback).
+                    float prevy = buffer.FloatBuffer[Math.Max(previ, 0)]; //*Math.Max is used to prevent out of bounds error (0 is used as a fallback)*\\
 
-                    //render graph
+                    //*render graph*\\
                     Graphics.SetColor(colour.r, colour.g, colour.b);
                     Graphics.Line(prevx, WindowHeight / 2 + prevy * (WindowHeight / (intensity * 2)), x, WindowHeight / 2 + y * (WindowHeight / (intensity * 2)));
                 }
