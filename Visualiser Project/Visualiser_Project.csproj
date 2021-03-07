@@ -7,7 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="ConsoleTables" Version="2.4.2" />
     <PackageReference Include="Love2dCS" Version="11.0.50" />
     <PackageReference Include="NAudio" Version="2.0.0" />
   </ItemGroup>
