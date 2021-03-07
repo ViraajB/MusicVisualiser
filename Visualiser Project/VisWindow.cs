@@ -27,8 +27,14 @@ namespace Visualiser_Project
 
         public override void KeyPressed(KeyConstant key, Scancode scancode, bool isRepeat)
         {
-            if (key == KeyConstant.F) Window.SetFullscreen(!Window.GetFullscreen()); 
-            if (key == KeyConstant.Escape) Environment.Exit(0); //*Closes program
+            if (key == KeyConstant.F) 
+            { 
+                Window.SetFullscreen(!Window.GetFullscreen()); //*sets fullscreen only if the current windowmode is not fullscreen
+            }
+            if (key == KeyConstant.Escape)
+            {
+                Environment.Exit(0);
+            }
         }
     }
 }

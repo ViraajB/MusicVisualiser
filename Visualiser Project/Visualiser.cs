@@ -51,7 +51,6 @@ namespace Visualiser_Project
         public override void KeyPressed(KeyConstant key, Scancode scancode, bool isRepeat)
         {
             base.KeyPressed(key, scancode, isRepeat);
-
             switch (key)
             {
                 case KeyConstant.S:

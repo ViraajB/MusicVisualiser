@@ -3,7 +3,7 @@
   <PropertyGroup>
     <OutputType>Exe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <RootNamespace>Computing_Project</RootNamespace>
+    <RootNamespace>Visualiser_Project</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
