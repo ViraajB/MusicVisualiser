@@ -5,7 +5,7 @@ using System;
 
 namespace Visualiser_Project
 {
-    class Visualiser : VisWindow
+    class Visualiser : Scene
     {
         //*bar specific variables
         int M = 6;
@@ -13,8 +13,8 @@ namespace Visualiser_Project
         //*used in both
         WaveBuffer buffer;
         bool hidden = false;
-        int visType = 0;
-        const int maxVisType = 1;
+        int visType = 0; //*default vistype is bar
+        int maxVisType = 1;
         bool changeColour = false;
         /*
          * Changing this to an integer allows more freedom, e.g. if I want to add more types.
@@ -29,10 +29,18 @@ namespace Visualiser_Project
         int red = 255; //defaults to red
         int green = 000;
         int blue = 000;
+
+        //*window variables
+        int WindowHeight;
+        int WindowWidth;
         public override void Load()
         {
-            WindowTitle = "Visualiser";
-            base.Load();
+            WindowSettings mode = Window.GetMode();
+            mode.Resizable = true;
+            Window.SetMode(mode);
+            Window.SetTitle("Visualiser");
+            WindowWidth = Graphics.GetWidth();
+            WindowHeight = Graphics.GetHeight();
 
             //start audio capture
             var capture = new WasapiLoopbackCapture();
@@ -48,9 +56,23 @@ namespace Visualiser_Project
         {
             buffer = new WaveBuffer(e.Buffer); //*saves buffer in the class variable
         }
+
+        public override void WindowResize(int w, int h)
+        {
+            WindowWidth = w;
+            WindowHeight = h;
+        }
         public override void KeyPressed(KeyConstant key, Scancode scancode, bool isRepeat)
         {
-            base.KeyPressed(key, scancode, isRepeat);
+            if (key == KeyConstant.F)
+            {
+                Window.SetFullscreen(!Window.GetFullscreen()); //*sets fullscreen only if the current windowmode is not fullscreen
+            }
+            if (key == KeyConstant.Escape)
+            {
+                Environment.Exit(0);
+            }
+
             switch (key)
             {
                 case KeyConstant.S:
@@ -136,19 +158,19 @@ namespace Visualiser_Project
                     "\nPress 'H' to hide this text" + 
                     "\nPress 'S' to change the visualiser style" + 
                     "\nPress 'C' to change colour"
-                );
+                    );
             }
 
             if (changeColour == true)
             {
                 Graphics.Print(
-                        "Press 'R' for red" + 
-                        "\nPress 'G' for green" + 
-                        "\nPress 'B' for blue" + 
-                        "\nPress 'P' for purple" + 
-                        "\nPress 'W' for white" + 
-                        "\nPress 'Y' for yellow" + 
-                        "\nPress 'C' to return to the previous menu"
+                    "Press 'R' for red" + 
+                    "\nPress 'G' for green" + 
+                    "\nPress 'B' for blue" + 
+                    "\nPress 'P' for purple" + 
+                    "\nPress 'W' for white" + 
+                    "\nPress 'Y' for yellow" + 
+                    "\nPress 'C' to return to the previous menu"
                     );
             }
             
