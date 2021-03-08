@@ -7,9 +7,6 @@ namespace Visualiser_Project
 {
     class Program : Scene
     {
-        //*bar specific variables
-        int M = 6;
-
         //*used in both
         WaveBuffer buffer;
         bool hidden = false;
@@ -23,7 +20,7 @@ namespace Visualiser_Project
          */
 
         //*graph specific variables
-        int intensity = 2;
+        int sensitivity = 2;
 
         //*colour variables
         int red = 255; //defaults to red
@@ -144,6 +141,11 @@ namespace Visualiser_Project
             }
         }
 
+        public override void WheelMoved(int x, int y)
+        {
+            sensitivity = Math.Max(sensitivity - y, 1);
+        }
+
         public override void Draw()
         {
             if (visType > maxVisType)
@@ -192,12 +194,12 @@ namespace Visualiser_Project
                     values[i].Y = 0;
                     values[i].X = buffer.FloatBuffer[i];
                 }
-                FastFourierTransform.FFT(true, M, values);
+                FastFourierTransform.FFT(true, 6, values);
 
-                float size = (float)WindowWidth / ((float)Math.Pow(2, M));
+                float size = (float)WindowWidth / ((float)36);
 
                 Graphics.SetColor(red, green, blue);
-                for (int i = 1; i < Math.Pow(2, M); i++)
+                for (int i = 1; i < 36; i++)
                 {
                     Graphics.Rectangle(DrawMode.Fill, (i - 1) * size, WindowHeight, size, -Math.Abs(values[i].X) * (WindowHeight / 2) * 8);
                 }
@@ -205,6 +207,14 @@ namespace Visualiser_Project
 
             if (visType == 1)
             {
+                if (hidden == false)
+                {
+                    Graphics.Print(
+                        "\n" + "\n" + "\n" + "\n" + "\n" +
+                        "\nUse the mouse wheel to adjust sensitivity" +
+                        "\nCurrent sensitivity = " + sensitivity
+                        );
+                }
                 int len = buffer.FloatBuffer.Length / 10;
                 float spp = len / WindowWidth; //*samples per pixel
 
@@ -221,7 +231,7 @@ namespace Visualiser_Project
 
                     //*render graph
                     Graphics.SetColor(red, green, blue);
-                    Graphics.Line(prevx, WindowHeight / 2 + prevy * (WindowHeight / (intensity * 2)), x, WindowHeight / 2 + y * (WindowHeight / (intensity * 2)));
+                    Graphics.Line(prevx, WindowHeight / 2 + prevy * (WindowHeight / (sensitivity * 2)), x, WindowHeight / 2 + y * (WindowHeight / (sensitivity * 2)));
                 }
             }
         }
