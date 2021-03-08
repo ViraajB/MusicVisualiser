@@ -143,6 +143,10 @@ namespace Visualiser_Project
         }
         public override void Draw()
         {
+            if (visType > maxVisType)
+            {
+                visType = 0;
+            }
             Graphics.SetColor(255, 255, 255);
             if (buffer == null)
             {
