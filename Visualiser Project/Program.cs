@@ -196,12 +196,12 @@ namespace Visualiser_Project
                 }
                 FastFourierTransform.FFT(true, 6, values);
 
-                float size = (float)WindowWidth / ((float)36);
+                int size = WindowWidth / 18;
 
                 Graphics.SetColor(red, green, blue);
-                for (int i = 1; i < 36; i++)
+                for (int i = 1; i < 18; i++)
                 {
-                    Graphics.Rectangle(DrawMode.Fill, (i - 1) * size, WindowHeight, size, -Math.Abs(values[i].X) * (WindowHeight / 2) * 8);
+                    Graphics.Rectangle(DrawMode.Fill, (i - 1) * size, WindowHeight, size, -Math.Abs(values[i].X) * (WindowHeight / 2) * 10);
                 }
             }
 
