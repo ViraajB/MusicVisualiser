@@ -11,7 +11,7 @@ namespace Visualiser_Project
         WaveBuffer buffer;
         bool hidden = false;
         int visType = 0; //*default vistype is bar
-        int maxVisType = 1;
+        readonly int maxVisType = 1;
         bool changeColour = false;
         /*
          * Changing this to an integer allows more freedom, e.g. if I want to add more types.
@@ -74,27 +74,33 @@ namespace Visualiser_Project
             switch (key)
             {
                 case KeyConstant.S:
-                    if (visType < maxVisType)
                     {
-                        visType += 1;
-                    }
-                    else if (visType == maxVisType)
-                    {
-                        visType -= 1;
-                    }
-                    else
-                    {
-                        visType = 0; //! default to 0 in case of error 
+                        if (visType < maxVisType)
+                        {
+                            visType += 1;
+                        }
+                        else if (visType == maxVisType)
+                        {
+                            visType -= 1;
+                        }
+                        else
+                        {
+                            visType = 0; //! default to 0 in case of error 
+                        }
                     }
                     break;
 
                 case KeyConstant.H:
-                    hidden = !hidden;
+                    {
+                        hidden = !hidden;
+                    }
                     break;
 
                 case KeyConstant.C:
-                    changeColour = !changeColour;
-                    hidden = !hidden;
+                    {
+                        changeColour = !changeColour;
+                        hidden = !hidden;
+                    }
                     break;
             }
 
@@ -103,39 +109,51 @@ namespace Visualiser_Project
                 switch (key)
                 {
                     case KeyConstant.R:
-                        red = 255;
-                        green = 000;
-                        blue = 000;
+                        {
+                            red = 255;
+                            green = 000;
+                            blue = 000;
+                        }
                         break;
 
                     case KeyConstant.G:
-                        red = 000;
-                        green = 255;
-                        blue = 000;
+                        {
+                            red = 000;
+                            green = 255;
+                            blue = 000;
+                        }
                         break;
 
                     case KeyConstant.B:
-                        red = 000;
-                        green = 000;
-                        blue = 255;
+                        {
+                            red = 000;
+                            green = 000;
+                            blue = 255;
+                        }
                         break;
 
                     case KeyConstant.P:
-                        red = 128;
-                        green = 000;
-                        blue = 128;
+                        {
+                            red = 128;
+                            green = 000;
+                            blue = 128;
+                        }
                         break;
 
                     case KeyConstant.W:
-                        red = 255;
-                        green = 255;
-                        blue = 255;
+                        {
+                            red = 255;
+                            green = 255;
+                            blue = 255;
+                        }
                         break;
 
                     case KeyConstant.Y:
-                        red = 255;
-                        green = 255;
-                        blue = 000;
+                        {
+                            red = 255;
+                            green = 255;
+                            blue = 000;
+                        }
                         break;
                 }
             }
@@ -236,7 +254,7 @@ namespace Visualiser_Project
             }
         }
 
-        static void Main(string[] args)
+        static void Main()
         {
             Boot.Run(new Program());
         }
