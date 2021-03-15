@@ -107,24 +107,6 @@ namespace Visualiser_Project
                     break;
             }
 
-            if (visType == 0) //manipulating the bar visualiser
-            {
-                switch (key)
-                {
-                    case KeyConstant.Up:
-                        {
-                            barwidth += 1;
-                        }
-                        break;
-
-                    case KeyConstant.Down:
-                        {
-                            barwidth = Math.Max(barwidth - 1, 1);
-                        }
-                        break;
-                }
-            }
-
             if (changeColour == true) //*add colours here
             {
                 switch (key)
@@ -182,7 +164,18 @@ namespace Visualiser_Project
 
         public override void WheelMoved(int x, int y)
         {
-            sensitivity = Math.Max(sensitivity - y, 1);
+            if (visType == 0)
+            {
+                barwidth = Math.Max(barwidth - y, 2);
+            }
+            else if (visType == 1)
+            {
+                sensitivity = Math.Max(sensitivity - y, 1);
+            }
+            else
+            {
+                visType = 0;
+            }
         }
 
         public override void Draw()
@@ -226,9 +219,8 @@ namespace Visualiser_Project
             {
                 Graphics.Print(
                     "\n" + "\n" + "\n" + "\n" + "\n" +
-                    "\nCurrent bar width modifier: " + barwidth + 
-                    "\nPress 'Up' to increase the modifier" + 
-                    "\nPress 'Down' to decrease the modifier"
+                    "\nUse the mouse wheel to adjust the bar width modifier" + 
+                    "\nCurrent bar width modifier: " + barwidth 
                     );
                 int len = buffer.FloatBuffer.Length / 8;
 
@@ -247,7 +239,7 @@ namespace Visualiser_Project
                 for (int i = 1; i < barwidth; i++)
                 {
                     //Graphics.Print((values[i].X).ToString());
-                    Graphics.Rectangle(DrawMode.Fill, (i - 1) * size, WindowHeight, size, -Math.Abs(values[i].X) * (WindowHeight / 2) * 10);
+                    Graphics.Rectangle(DrawMode.Fill, (i - 1) * size, WindowHeight, size, -Math.Abs(values[i].X) * (WindowHeight / 4) * 10);
                 }
             }
 
