@@ -11,7 +11,6 @@ namespace Visualiser_Project
         WaveBuffer buffer;
         bool hidden = false;
         int visType = 0; //*default vistype is bar
-        readonly int maxVisType = 1;
         bool changeColour = false;
         /*
          * Changing this to an integer allows more freedom, e.g. if I want to add more types.
@@ -76,20 +75,15 @@ namespace Visualiser_Project
 
             switch (key)
             {
-                case KeyConstant.S:
+                case KeyConstant.Number1:
                     {
-                        if (visType < maxVisType)
-                        {
-                            visType += 1;
-                        }
-                        else if (visType == maxVisType)
-                        {
-                            visType -= 1;
-                        }
-                        else
-                        {
-                            visType = 0; //! default to 0 in case of error 
-                        }
+                        visType = 0;
+                    }
+                    break;
+
+                case KeyConstant.Number2:
+                    {
+                        visType = 1;
                     }
                     break;
 
@@ -172,18 +166,10 @@ namespace Visualiser_Project
             {
                 sensitivity = Math.Max(sensitivity - y, 1);
             }
-            else
-            {
-                visType = 0;
-            }
         }
 
         public override void Draw()
         {
-            if (visType > maxVisType)
-            {
-                visType = 0;
-            }
             Graphics.SetColor(255, 255, 255);
             if (buffer == null)
             {
