@@ -203,13 +203,16 @@ namespace Visualiser_Project
 
             if (visType == 0)
             {
-                Graphics.Print(
-                    "\n" + "\n" + "\n" + "\n" + "\n" +
-                    "\nUse the mouse wheel to adjust the bar width modifier" + 
-                    "\nCurrent bar width modifier: " + barwidth 
-                    );
-                int len = buffer.FloatBuffer.Length / 8;
+                if (hidden == false)
+                {
+                    Graphics.Print(
+                        "\n" + "\n" + "\n" + "\n" + "\n" +
+                        "\nUse the mouse wheel to adjust the bar width modifier" +
+                        "\nCurrent bar width modifier: " + barwidth
+                        );
+                }
 
+                int len = buffer.FloatBuffer.Length / 8;
                 //fft
                 Complex[] values = new Complex[len];
                 for (int i = 0; i < len; i++)
@@ -239,9 +242,9 @@ namespace Visualiser_Project
                         "\nCurrent sensitivity = " + sensitivity
                         );
                 }
+
                 int len = buffer.FloatBuffer.Length / 10;
                 float spp = len / WindowWidth; //*samples per pixel
-
                 for (int i = 0; i < WindowWidth; i++)
                 {
                     //*current sample
