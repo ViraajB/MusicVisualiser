@@ -27,6 +27,9 @@ namespace Visualiser_Project
         int green = 000;
         int blue = 000;
 
+        //bar specific variables
+        int barwidth = 32;
+
         //*window variables
         int WindowHeight;
         int WindowWidth;
@@ -102,6 +105,24 @@ namespace Visualiser_Project
                         hidden = !hidden;
                     }
                     break;
+            }
+
+            if (visType == 0) //manipulating the bar visualiser
+            {
+                switch (key)
+                {
+                    case KeyConstant.Up:
+                        {
+                            barwidth += 1;
+                        }
+                        break;
+
+                    case KeyConstant.Down:
+                        {
+                            barwidth = Math.Max(barwidth - 1, 1);
+                        }
+                        break;
+                }
             }
 
             if (changeColour == true) //*add colours here
@@ -203,6 +224,12 @@ namespace Visualiser_Project
 
             if (visType == 0)
             {
+                Graphics.Print(
+                    "\n" + "\n" + "\n" + "\n" + "\n" +
+                    "\nCurrent bar width modifier: " + barwidth + 
+                    "\nPress 'Up' to increase the modifier" + 
+                    "\nPress 'Down' to decrease the modifier"
+                    );
                 int len = buffer.FloatBuffer.Length / 8;
 
                 //fft
@@ -212,13 +239,14 @@ namespace Visualiser_Project
                     values[i].Y = 0;
                     values[i].X = buffer.FloatBuffer[i];
                 }
-                FastFourierTransform.FFT(true, 6, values);
+                FastFourierTransform.FFT(true, 8, values);
 
-                int size = WindowWidth / 18;
+                int size = WindowWidth / barwidth;
 
                 Graphics.SetColor(red, green, blue);
-                for (int i = 1; i < 18; i++)
+                for (int i = 1; i < barwidth; i++)
                 {
+                    //Graphics.Print((values[i].X).ToString());
                     Graphics.Rectangle(DrawMode.Fill, (i - 1) * size, WindowHeight, size, -Math.Abs(values[i].X) * (WindowHeight / 2) * 10);
                 }
             }
