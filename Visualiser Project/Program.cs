@@ -244,16 +244,16 @@ namespace Visualiser_Project
                 }
 
                 int len = buffer.FloatBuffer.Length / 10;
-                float spp = len / WindowWidth; //*samples per pixel
+                int spp = len / WindowWidth; //*samples per pixel
                 for (int i = 0; i < WindowWidth; i++)
                 {
                     //*current sample
-                    int x = (int)Math.Round(i * spp);
+                    int x = i * spp;
                     float y = buffer.FloatBuffer[i];
 
                     //*previous sample
                     int prevx = x - 1;
-                    int previ = (int)Math.Round((i - 1) * spp);
+                    int previ = (i - 1) * spp;
                     float prevy = buffer.FloatBuffer[Math.Max(previ, 0)]; //*Math.Max is used to prevent out of bounds error (0 is used as a fallback)
 
                     //*render graph
