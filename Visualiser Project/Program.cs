@@ -160,7 +160,7 @@ namespace Visualiser_Project
         {
             if (visType == 0)
             {
-                barwidth = Math.Max(barwidth - y, 2);
+                barwidth = Math.Max(barwidth - y, 1);
             }
             else if (visType == 1)
             {
