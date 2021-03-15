@@ -183,7 +183,7 @@ namespace Visualiser_Project
                     "Press 'Escape' to exit" +
                     "\nPress 'F' to enter or exit full screen mode" +
                     "\nPress 'H' to hide this text" +
-                    "\nPress 'S' to change the visualiser style" +
+                    "\nUse the number keys to change the visualiser type" +
                     "\nPress 'C' to change colour"
                     );
             }
