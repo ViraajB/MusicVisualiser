@@ -22,9 +22,13 @@ namespace Visualiser_Project
         int sensitivity = 2;
 
         //*colour variables
-        int red = 255; //defaults to red
-        int green = 000;
-        int blue = 000;
+        public struct Colour
+        {
+            public int red;
+            public int green;
+            public int blue;
+        }
+        public Colour userColour = new Colour();
 
         //bar specific variables
         int barwidth = 32;
@@ -34,6 +38,7 @@ namespace Visualiser_Project
         int WindowWidth;
         public override void Load()
         {
+            userColour.red = 255; //default colour is pure red
             WindowSettings mode = Window.GetMode();
             mode.Resizable = true;
             Window.SetMode(mode);
@@ -107,49 +112,49 @@ namespace Visualiser_Project
                 {
                     case KeyConstant.R:
                         {
-                            red = 255;
-                            green = 000;
-                            blue = 000;
+                            userColour.red = 255;
+                            userColour.green = 000;
+                            userColour.blue = 000;
                         }
                         break;
 
                     case KeyConstant.G:
                         {
-                            red = 000;
-                            green = 255;
-                            blue = 000;
+                            userColour.red = 000;
+                            userColour.green = 255;
+                            userColour.blue = 000;
                         }
                         break;
 
                     case KeyConstant.B:
                         {
-                            red = 000;
-                            green = 000;
-                            blue = 255;
+                            userColour.red = 000;
+                            userColour.green = 000;
+                            userColour.blue = 255;
                         }
                         break;
 
                     case KeyConstant.P:
                         {
-                            red = 128;
-                            green = 000;
-                            blue = 128;
+                            userColour.red = 128;
+                            userColour.green = 000;
+                            userColour.blue = 128;
                         }
                         break;
 
                     case KeyConstant.W:
                         {
-                            red = 255;
-                            green = 255;
-                            blue = 255;
+                            userColour.red = 255;
+                            userColour.green = 255;
+                            userColour.blue = 255;
                         }
                         break;
 
                     case KeyConstant.Y:
                         {
-                            red = 255;
-                            green = 255;
-                            blue = 000;
+                            userColour.red = 255;
+                            userColour.green = 255;
+                            userColour.blue = 000;
                         }
                         break;
                 }
@@ -224,7 +229,7 @@ namespace Visualiser_Project
 
                 int size = WindowWidth / barwidth;
 
-                Graphics.SetColor(red, green, blue);
+                Graphics.SetColor(userColour.red, userColour.green, userColour.blue);
                 for (int i = 1; i < barwidth; i++)
                 {
                     //Graphics.Print((values[i].X).ToString());
@@ -257,7 +262,7 @@ namespace Visualiser_Project
                     float prevy = buffer.FloatBuffer[Math.Max(previ, 0)]; //*Math.Max is used to prevent out of bounds error (0 is used as a fallback)
 
                     //*render graph
-                    Graphics.SetColor(red, green, blue);
+                    Graphics.SetColor(userColour.red, userColour.green, userColour.blue);
                     Graphics.Line(prevx, WindowHeight / 2 + prevy * (WindowHeight / (sensitivity * 2)), x, WindowHeight / 2 + y * (WindowHeight / (sensitivity * 2)));
                 }
             }
