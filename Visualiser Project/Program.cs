@@ -28,7 +28,7 @@ namespace Visualiser_Project
             public int green;
             public int blue;
         }
-        public Colour userColour = new Colour();
+        static Colour userColour = new Colour();
 
         //bar specific variables
         int barwidth = 32;
@@ -190,7 +190,7 @@ namespace Visualiser_Project
                     "\nPress 'H' to hide this text" +
                     "\nUse the number keys to change the visualiser type" +
                     "\nPress 'C' to change colour"
-                    );
+                );
             }
 
             if (changeColour == true)
@@ -203,7 +203,7 @@ namespace Visualiser_Project
                     "\nPress 'W' for white" +
                     "\nPress 'Y' for yellow" +
                     "\nPress 'C' to return to the previous menu"
-                    );
+                );
             }
 
             if (visType == 0)
@@ -214,7 +214,7 @@ namespace Visualiser_Project
                         "\n" + "\n" + "\n" + "\n" + "\n" +
                         "\nUse the mouse wheel to adjust the bar width modifier" +
                         "\nCurrent bar width modifier: " + barwidth
-                        );
+                    );
                 }
 
                 int len = buffer.FloatBuffer.Length / 8;
@@ -245,7 +245,7 @@ namespace Visualiser_Project
                         "\n" + "\n" + "\n" + "\n" + "\n" +
                         "\nUse the mouse wheel to adjust sensitivity" +
                         "\nCurrent sensitivity = " + sensitivity
-                        );
+                    );
                 }
 
                 int len = buffer.FloatBuffer.Length / 10;
