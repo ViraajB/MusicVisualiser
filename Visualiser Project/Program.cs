@@ -11,12 +11,12 @@ namespace Visualiser_Project
         WaveBuffer buffer;
         bool hidden = false;
         int visType = 0; //*default vistype is bar
-        bool changeColour = false;
         /*
-         * Changing this to an integer allows more freedom, e.g. if I want to add more types.
+         * Changing this to an integer allows freedom to add more types.
          * 0 = Bar
          * 1 = Graph
          */
+         bool changeColour = false;
 
         //*graph specific variables
         int sensitivity = 2;
